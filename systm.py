@@ -1,19 +1,18 @@
 
 import os
 from cryptography.fernet import Fernet
-import systm
 from cryptography.fernet import InvalidToken
 
 arq = 'arqpss.txt'
 kyloc = 'ky.key' 
-A = 10
+A = True
 
 
 def executar(nome):
     print(f"executando o arquivo {nome}")
 
 def console_menu():
-    while A < 20:
+    while True:
         print ("Sistema de armazenamento de Credencial")
         opção = input("1- Salvar Nova Senha. \n2- Para listar Senhas\n")
         if opção == "1":
@@ -95,10 +94,9 @@ def salvar_senha(titulo: str, senha: str) -> str:
         return "Erro: chave inválida"
 
 
-## INFORMAÇÕES IMPORTANTES: OS ARQUIVOS AQUI PRESENTES SÃO EXEMPLOS E NÃO DEVEM SER USADOS EM AMBIENTES DE PRODUÇÃO. ESTE CÓDIGO É APENAS PARA FINS EDUCACIONAIS E DE TESTE. NÃO É RECOMENDADO ARMAZENAR SENHAS EM TEXTO SIMPLES OU USAR CHAVES FIXAS EM APLICAÇÕES REAIS.
-
-
-console_menu()
+## INFORMAÇÕES IMPORTANTES: OS ARQUIVOS AQUI PRESENTES SÃO EXEMPLOS DE CRIPTOGRAFIA BASICA E CRIAÇÃO DE ARQUIVOS DE ARMAZENAMENTOS DE SENHAS.
+# OS ARQUIVOS DE SENHA E ARMAZENADOR DE SENHA, SERÃO GERADOS AUTOMATICAMENTE AO SELECIONAR A OPÇÃO DE CRIAÇÃO.
+# É RECOMENDADO QUE O USUARIO ARMAZENE SUA CHAVE, UMA VEZ QUE A PERDA DA MESMA, RESULTARÁ NA PERDA DE TODAS AS SENHAS ARMAZENADAS.
 
 if __name__ == "__main__":
     console_menu()
