@@ -14,7 +14,7 @@ def executar(nome):
 def console_menu():
     while True:
         print ("Sistema de armazenamento de Credencial")
-        opção = input("1- Salvar Nova Senha. \n2- Para listar Senhas\n")
+        opção = input("1- Salvar Nova Senha. \n2- Para listar Senhas\n 9- Para criar um arquivo de chave novo\n0- Sair\nDigite a opção desejada: ")
         if opção == "1":
             if not kyloc or not os.path.exists(kyloc):
                 return print("Erro: arquivo de chave vazio/Não encontrado")
@@ -69,6 +69,9 @@ def console_menu():
                                 print("Arquivo de senhas não encontrado.")
 
                         sh = Fernet(key)
+        if opção == "0":
+            print("Saindo do programa...")
+            break
 
 def salvar_senha(titulo: str, senha: str) -> str:
     try:
