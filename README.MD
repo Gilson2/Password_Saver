@@ -1,32 +1,32 @@
-🔐 Gerenciador de Credenciais — Python
+# 🔐 Gerenciador de Credenciais — Python
 
 Um sistema simples de armazenamento de credenciais desenvolvido em **Python**, utilizando criptografia para proteger as senhas armazenadas localmente.
 
-O projeto foi desenvolvido com finalidade de aprendizagem, com o objetivo de estudar conceitos de criptografia, manipulação de arquivos, gerenciamento de chaves e tratamento de exceções em Python.
+O projeto foi desenvolvido com finalidade de **aprendizagem**, com o objetivo de estudar conceitos de criptografia, manipulação de arquivos, gerenciamento de chaves e tratamento de exceções em Python.
 
+---
 
-
-📌 Sobre o projeto
+## 📌 Sobre o projeto
 
 A aplicação permite armazenar credenciais localmente em um arquivo de texto, utilizando uma chave criptográfica para proteger as senhas antes de serem armazenadas.
 
 O fluxo básico da aplicação é:
 
-
+```text
 Título + Senha
-   ↓
+      ↓
 Criptografia Fernet
-   ↓
+      ↓
 Arquivo local
-   ↓
+      ↓
 Senha criptografada
-
+```
 
 Quando o usuário solicita a listagem das credenciais, a aplicação utiliza a chave armazenada localmente para descriptografar os dados.
 
-----
+---
 
-⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
 * 🔑 Geração de chave criptográfica
 * 🔐 Criptografia das senhas utilizando Fernet
@@ -38,7 +38,7 @@ Quando o usuário solicita a listagem das credenciais, a aplicação utiliza a c
 
 ---
 
-🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias utilizadas
 
 * **Python 3**
 * **Cryptography**
@@ -46,72 +46,77 @@ Quando o usuário solicita a listagem das credenciais, a aplicação utiliza a c
 * **OS / File System**
 * **Git / GitHub**
 
---Biblioteca externa
+### Biblioteca externa
 
 O projeto utiliza a biblioteca:
 
+```text
 cryptography
-
+```
 
 Instalação:
 
-bash:
+```bash
 pip install cryptography
-
+```
 
 Ou, utilizando o arquivo `requirements.txt`:
 
-bash:
+```bash
 pip install -r requirements.txt
+```
 
+---
 
+## 📦 Estrutura do projeto
 
-📦 Estrutura do projeto
-
-InterSegSis/
+```text
+Password_Saver/
 │
 ├── systm.py
 ├── requirements.txt
 ├── README.md
+└── .gitignore
+```
 
+Durante a execução, a aplicação utiliza arquivos locais para armazenar a chave e as credenciais:
 
-Durante a execução, a aplicação utiliza arquivos locais para armazenar a chave e as credenciais.
-
+```text
 ky.key
 arqpss.txt
-
+```
 
 Esses arquivos **não devem ser enviados ao GitHub**.
 
 ---
 
-🔐 Como funciona a criptografia?
+## 🔐 Como funciona a criptografia?
 
 O projeto utiliza o **Fernet**, disponibilizado pela biblioteca `cryptography`.
 
-A chave é gerada através de:
+A chave criptográfica é gerada através de:
 
-python:
+```python
 from cryptography.fernet import Fernet
 
 key = Fernet.generate_key()
-
+```
 
 A senha fornecida pelo usuário é então criptografada:
 
-python:
+```python
 encrypted_password = cipher.encrypt(password.encode())
-
+```
 
 O resultado criptografado é armazenado localmente.
 
 Para recuperar a senha, a aplicação utiliza a mesma chave:
 
-python
+```python
 password = cipher.decrypt(encrypted_password).decode()
+```
 
-
-!!-- Importante --!!
+### ⚠️ Importante
 
 O sistema utiliza **criptografia simétrica**.
 
@@ -119,93 +124,112 @@ Isso significa que a mesma chave utilizada para criptografar os dados é necess�
 
 Portanto:
 
-> **A perda da chave significa a perda do acesso às credenciais criptografadas.** <
+> **A perda da chave significa a perda do acesso às credenciais criptografadas.**
 
 ---
 
-🔑 Segurança da chave
+## 🔑 Segurança da chave
 
 A chave criptográfica é um dos componentes mais importantes da aplicação.
 
 O arquivo:
 
-text
+```text
 ky.key
+```
 
-
->**não deve ser publicado no GitHub.**<
+**não deve ser publicado no GitHub.**
 
 Da mesma forma, o arquivo contendo as credenciais:
 
-text:
+```text
 arqpss.txt
+```
 
+também não deve ser versionado.
 
-⚠️ Por que isso é importante?
+### ⚠️ Por que isso é importante?
 
 A criptografia protege os dados enquanto a chave permanece secreta.
 
 Se uma pessoa obtiver:
 
-text:
+```text
 ky.key
-
+```
 
 e:
 
-text:
+```text
 arqpss.txt
-
+```
 
 ela poderá utilizar a chave para descriptografar as credenciais.
 
+Por esse motivo, esses arquivos devem ser protegidos e adicionados ao `.gitignore`.
+
+Exemplo:
+
+```gitignore
+ky.key
+arqpss.txt
+
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+
+.env
+```
+
 ---
 
-🚀 Executando o projeto
+## 🚀 Executando o projeto
 
-Clone o repositório:
+### 1. Clone o repositório
 
-bash:
+```bash
 git clone https://github.com/Gilson2/Password_Saver.git
+```
 
+### 2. Entre no diretório
 
-Entre no diretório:
+```bash
+cd Password_Saver
+```
 
-bash:
-cd credential-manager
+### 3. Crie um ambiente virtual
 
-
-Opcionalmente, crie um ambiente virtual:
-
-bash:
+```bash
 python -m venv .venv
+```
 
+### 4. Ative o ambiente virtual no Windows
 
-Ative o ambiente virtual no Windows:
-
-bash:
+```bash
 .venv\Scripts\activate
+```
 
+### 5. Instale as dependências
 
-Instale as dependências:
-
-bash:
+```bash
 pip install -r requirements.txt
+```
 
+### 6. Execute a aplicação
 
-Execute a aplicação:
-
-bash:
+```bash
 python systm.py
-
+```
 
 ---
 
-🖥️ Exemplo de utilização
+## 🖥️ Exemplo de utilização
 
 Ao executar a aplicação:
 
-
+```text
 Sistema de armazenamento de Credenciais
 
 1 - Salvar Nova Senha
@@ -216,7 +240,7 @@ Sistema de armazenamento de Credenciais
 
 Ao salvar uma credencial:
 
-----
+```text
 Digite o título da senha: GitHub
 Digite a senha:
 Senha 'GitHub' salva com sucesso
@@ -224,23 +248,23 @@ Senha 'GitHub' salva com sucesso
 
 A senha não é armazenada em texto puro.
 
-Exemplo conceitual do arquivo:
+Um exemplo conceitual do arquivo de armazenamento:
 
-
+```text
 GitHub|gAAAAAB...
 Email|gAAAAAB...
 Sistema|gAAAAAB...
-
+```
 
 O conteúdo após `|` representa o valor criptografado.
 
 ---
 
-⚠️ Aviso importante
+## ⚠️ Aviso importante
 
 Este projeto foi desenvolvido para **fins educacionais e de demonstração**.
 
-Embora utilize criptografia para proteger as credenciais armazenadas, ele **não deve ser considerado um gerenciador de senhas profissional ou solução de segurança para ambientes de produção**.
+Embora utilize criptografia para proteger as credenciais armazenadas, ele **não deve ser considerado um gerenciador de senhas profissional ou uma solução de segurança para ambientes de produção**.
 
 Um sistema de gerenciamento de credenciais destinado à produção precisaria implementar outras medidas de segurança, como:
 
@@ -255,7 +279,7 @@ Um sistema de gerenciamento de credenciais destinado à produção precisaria im
 
 ---
 
-📚 Objetivos de aprendizado
+## 📚 Objetivos de aprendizagem
 
 Este projeto foi desenvolvido para praticar conceitos de:
 
@@ -272,7 +296,7 @@ Este projeto foi desenvolvido para praticar conceitos de:
 
 ---
 
-🔮 Próximas melhorias
+## 🔮 Próximas melhorias
 
 Algumas funcionalidades que podem ser implementadas futuramente:
 
@@ -294,4 +318,4 @@ Algumas funcionalidades que podem ser implementadas futuramente:
 
 **Gilson Calixto Neves**
 
-Projeto desenvolvido como parte do processo de aprendizado e aprimoramento em **desenvolvimento de software, Python e segurança da informação**.
+Projeto desenvolvido como parte do processo de aprendizagem e aprimoramento em **desenvolvimento de software, Python e segurança da informação**.
