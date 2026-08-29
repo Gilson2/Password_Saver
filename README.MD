@@ -148,6 +148,10 @@ arqpss.txt
 
 também não deve ser versionado.
 
+```text
+Na primeira execução, será necessário gerar uma nova chave criptográfica. Os arquivos ky.key e arqpss.txt são criados localmente e não fazem parte do repositório por questões de segurança.
+```
+
 ### ⚠️ Por que isso é importante?
 
 A criptografia protege os dados enquanto a chave permanece secreta.
