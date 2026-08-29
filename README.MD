@@ -226,11 +226,11 @@ A senha não é armazenada em texto puro.
 
 Exemplo conceitual do arquivo:
 
-----
+
 GitHub|gAAAAAB...
 Email|gAAAAAB...
 Sistema|gAAAAAB...
----
+
 
 O conteúdo após `|` representa o valor criptografado.
 
